@@ -147,8 +147,7 @@ public class BuzzFeed extends JFrame {
                 long mills = Integer.parseInt(inputTime.getText()) * 60 * 1000;
                 startTimer(mills);
             } catch (NumberFormatException error) {
-                startTimer(5000);
-                //JOptionPane.showMessageDialog(null, "숫자만 입력 가능합니다.");
+                JOptionPane.showMessageDialog(null, "숫자만 입력 가능합니다.");
             }
         }
     }
