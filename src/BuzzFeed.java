@@ -5,7 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class BuzzFeed extends JFrame {
 
@@ -128,7 +131,8 @@ public class BuzzFeed extends JFrame {
             if( mills < 0 ) {
                 stopTimer();
                 buzz();
-                JOptionPane.showMessageDialog(null, "타이머가 완료되었습니다!");
+                String currentTime = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"));
+                JOptionPane.showMessageDialog(null, "타이머가 완료되었습니다! (" + currentTime + ")");
                 return ;
             }
             setClock(mills);
