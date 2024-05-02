@@ -15,14 +15,16 @@ public class BuzzFeed extends JFrame {
     private JLabel clockLabel;
     private JTextField inputTime;
     private JLabel inputTimeLabel;
+    private JLabel accmTimeLabel;
     private JButton startButton;
     private JButton stopButton;
     private Timer timer;
     private DecimalFormat df;
+    private long accmMills;
 
     public BuzzFeed() {
         setTitle("BuzzFeed");
-        setSize(240, 160);
+        setSize(240, 185);
         setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -39,6 +41,8 @@ public class BuzzFeed extends JFrame {
         inputTimeLabel = new JLabel("min");
         startButton = new JButton("START");
         stopButton = new JButton("STOP");
+        accmTimeLabel = new JLabel("누적시간 00:00");
+        accmMills = 0;
 
         startButton.addActionListener(new OnClickStart());
         stopButton.addActionListener(new onClickStop());
@@ -57,9 +61,13 @@ public class BuzzFeed extends JFrame {
         panel3.add(startButton);
         panel3.add(stopButton);
 
+        JPanel panel4 = new JPanel();
+        panel4.add(accmTimeLabel);
+
         mainPanel.add(panel1);
         mainPanel.add(panel2);
         mainPanel.add(panel3);
+        mainPanel.add(panel4);
 
         backContainer.add(mainPanel, BorderLayout.CENTER);
 
@@ -83,6 +91,12 @@ public class BuzzFeed extends JFrame {
         long min = mills / 1000 / 60;
         long sec = (mills / 1000) % 60;
         clockLabel.setText(df.format(min) + ":" + df.format(sec) + ( mills <= 0 ? " left" : " lefts"));
+    }
+
+    private void setAccmTime() {
+        long min = accmMills / 1000 / 60;
+        long sec = (accmMills / 1000) % 60;
+        accmTimeLabel.setText("누적시간: " + df.format(min) + ":" + df.format(sec));
     }
 
     private boolean isTimerRunning() {
@@ -128,6 +142,8 @@ public class BuzzFeed extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             mills -= 1000;
+            accmMills += 1000;
+            setAccmTime();
             if( mills < 0 ) {
                 stopTimer();
                 buzz();
