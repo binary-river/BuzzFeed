@@ -11,7 +11,7 @@
 
 <br>
 
-![image](https://github.com/binary-river/BuzzFeed/assets/66468384/3baa6d3a-9aea-4968-8983-be47c525615f)
+![image](https://github.com/binary-river/BuzzFeed/assets/66468384/7a7ac65e-d583-476b-b75c-bc9f973f0241)
 
 
 
