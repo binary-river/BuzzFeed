@@ -24,7 +24,7 @@ public class BuzzFeed extends JFrame {
 
     public BuzzFeed() {
         setTitle("BuzzFeed");
-        setSize(240, 185);
+        setSize(240, 200);
         setLayout(new FlowLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
