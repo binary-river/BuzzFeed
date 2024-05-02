@@ -142,8 +142,6 @@ public class BuzzFeed extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             mills -= 1000;
-            accmMills += 1000;
-            setAccmTime();
             if( mills < 0 ) {
                 stopTimer();
                 buzz();
@@ -151,6 +149,9 @@ public class BuzzFeed extends JFrame {
                 JOptionPane.showMessageDialog(null, "타이머가 완료되었습니다! (" + currentTime + ")");
                 return ;
             }
+
+            accmMills += 1000;
+            setAccmTime();
             setClock(mills);
         }
     }
